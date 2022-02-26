@@ -1,5 +1,8 @@
 # StateServer
 
+[![Documentation](https://img.shields.io/badge/docs-hexpm-blue.svg)](http://hexdocs.pm/ax_webclient/)
+[![Elixir CI](https://github.com/iboard/state_server/actions/workflows/elixir.yml/badge.svg)](https://github.com/iboard/state_server/actions/workflows/elixir.yml)
+
 A simple wrapper around GenServer.
 
 There is a lot of annoying boilerplate when you're about to use GenServer. This project
