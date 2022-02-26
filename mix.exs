@@ -9,6 +9,7 @@ defmodule StateServer.MixProject do
 
   defp package do
     [
+      name: "ax_stateserver",
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
       maintainers: ["Andreas Altendorfer"],
       licenses: ["MIT"],
@@ -32,7 +33,7 @@ defmodule StateServer.MixProject do
       links: ["https://github.com/iboard/state_server"],
 
       # Docs 
-      name: "StateServer",
+      name: "Altex StateServer",
       source_url: "https://github.com/iboard/axrepo",
       homepage_url: "https://github.com/iboard/altex",
       docs: [
