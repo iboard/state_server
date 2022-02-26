@@ -12,7 +12,10 @@ defmodule StateServer do
         # define the init block of the GenServer.
         init params do
            # this will become the state of our GenServer
-           params
+           fn(params) -> 
+             # cast or prepare the initial state, based on the given params 
+             params
+           end
         end
 
         # define the function `set_value(pid, params)` and the corresponding
@@ -34,16 +37,27 @@ defmodule StateServer do
       end
 
 
-  {:ok, person_pid} = MyModule.start_link(name: "Alex", born: 1997)
+      {:ok, person_pid} = MyModule.start_link(name: "Alex", born: 1997)
 
-  MyModule.get_value(person_pid, :name)
-  # "Alex"
+      MyModule.get_value(person_pid, :name)
+      # "Alex"
 
-  MyModule.set_value(person_pid, [:name, "Alexis"])
+      MyModule.set_value(person_pid, [:name, "Alexis"])
 
-  MyModule.state(person_pid)
-  # [ name: "Alexis", born: 1997 ]
+      MyModule.state(person_pid)
+      # [ name: "Alexis", born: 1997 ]
 
+  By `use StateServer` you will get the default `GenServer`s `start_link/1` function. 
+  We also add a function `state/1` and a corresponding `handle_call` to return the
+  current state.
+
+  Use the macro `definit` to define the code for the `GenServer`'s `init/1` and the 
+
+  macros `defcall` and `defcast` to define pairs of a function and the corresponding
+  handle_call or handle_cast. 
+
+  `handle_call` will never change the state where `handle_cast` does change the state 
+  only. (querry, command separation.)
   """
   defmacro __using__(_opts \\ []) do
     quote do
